@@ -24,7 +24,7 @@ const TechnicalSpecs: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          Technical{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Technical</span>{" "}
           <span className="text-gradient">Specifications</span>
         </motion.h2>
 

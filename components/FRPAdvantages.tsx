@@ -57,7 +57,7 @@ const FRPAdvantages: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          Why FRP Over{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Why FRP Over</span>{" "}
           <span className="text-gradient">Traditional Tanks?</span>
         </motion.h2>
 

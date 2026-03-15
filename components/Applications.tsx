@@ -4,6 +4,18 @@ import { useRef, useEffect, useState } from "react";
 import { m as motion, useReducedMotion } from "framer-motion";
 import { APPLICATIONS } from "@/lib/constants";
 import { fadeInUp, reducedMotionFade } from "@/lib/animations";
+import Image from "next/image";
+
+const APP_IMAGES: Record<string, string> = {
+  "Hospitals & Healthcare": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+  "Hotels & Hospitality": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+  "Defence & Military": "https://images.unsplash.com/photo-1579912437766-7896df6d3cd3?w=800&q=80",
+  "Industrial & Manufacturing": "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80",
+  "Commercial Buildings": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+  "Schools & Universities": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
+  "Agriculture & Farming": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
+  "Residential Estates": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+};
 
 const Applications: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,33 +79,47 @@ const Applications: React.FC = () => {
         </div>
       )}
 
-      {/* Fixed heading */}
-      <div className="sticky top-20 z-20 px-4 sm:px-8 py-6">
+      {/* Heading */}
+      <div className="px-4 sm:px-8 pt-16 pb-10 text-center">
         <h2
           className="text-3xl sm:text-4xl lg:text-5xl font-[family-name:var(--font-clash,_'Clash_Display')] font-bold"
           data-cursor="text"
         >
-          Where BANCO Tanks{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Where BANCO Tanks</span>{" "}
           <span className="text-gradient">Are Used</span>
         </h2>
       </div>
 
       {/* Horizontal track (desktop) or vertical grid (mobile) */}
       {isMobile ? (
-        <div className="px-4 pb-24 grid gap-6">
+        <div className="px-4 pb-24 grid sm:grid-cols-2 gap-6">
           {APPLICATIONS.map((app, i) => (
             <motion.div
               key={app.name}
-              className={`rounded-3xl p-8 bg-gradient-to-br ${app.gradient} border border-white/10 dark:border-white/5`}
+              className="rounded-3xl overflow-hidden border border-white/10 dark:border-white/5 relative group"
               variants={prefersReduced ? reducedMotionFade : fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               custom={i}
             >
-              <span className="text-5xl block mb-4">{app.icon}</span>
-              <h3 className="text-2xl font-bold mb-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{app.name}</h3>
-              <p className="text-[var(--color-muted)]">{app.desc}</p>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={APP_IMAGES[app.name] ?? ""}
+                  alt={app.name}
+                  fill
+                  className="object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
+                  style={{ objectPosition: "center" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-4 text-4xl">{app.icon}</span>
+              </div>
+              <div className="p-6 bg-[var(--color-bg-card-light)] dark:bg-[var(--color-bg-card-dark)]">
+                <h3 className="text-xl font-bold mb-1 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{app.name}</h3>
+                <p className="text-sm text-[var(--color-muted)]">{app.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -107,11 +133,23 @@ const Applications: React.FC = () => {
             {APPLICATIONS.map((app) => (
               <div
                 key={app.name}
-                className={`shrink-0 w-[60vw] md:w-[45vw] lg:w-[35vw] h-[70vh] rounded-3xl p-10 flex flex-col justify-end bg-gradient-to-br ${app.gradient} border border-white/10 dark:border-white/5 group hover:border-[var(--color-accent)]/40 transition-colors`}
+                className="shrink-0 w-[60vw] md:w-[45vw] lg:w-[35vw] h-[70vh] rounded-3xl overflow-hidden relative group hover:border-[var(--color-accent)]/40 transition-colors border border-white/10 dark:border-white/5"
               >
-                <span className="text-7xl mb-6 group-hover:scale-110 transition-transform">{app.icon}</span>
-                <h3 className="text-3xl lg:text-4xl font-black mb-3 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{app.name}</h3>
-                <p className="text-base text-[var(--color-muted)] max-w-sm">{app.desc}</p>
+                <Image
+                  src={APP_IMAGES[app.name] ?? ""}
+                  alt={app.name}
+                  fill
+                  className="object-cover scale-110 group-hover:scale-[1.15] transition-transform duration-700"
+                  style={{ objectPosition: "center", transform: "translateZ(0)" }}
+                  sizes="60vw"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-10">
+                  <span className="text-7xl mb-6 block group-hover:scale-110 transition-transform">{app.icon}</span>
+                  <h3 className="text-3xl lg:text-4xl font-black mb-3 text-white">{app.name}</h3>
+                  <p className="text-base text-white/70 max-w-sm">{app.desc}</p>
+                </div>
               </div>
             ))}
           </div>

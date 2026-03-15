@@ -111,7 +111,7 @@ const ContactUs: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          Let&apos;s Build{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Let&apos;s Build</span>{" "}
           <span className="text-gradient">Together</span>
         </motion.h2>
 
@@ -139,7 +139,7 @@ const ContactUs: React.FC = () => {
                     </span>
                     <div>
                       <p className="text-xs text-[var(--color-muted)] uppercase tracking-wider">{card.label}</p>
-                      <p className="font-medium">{card.value}</p>
+                      <p className="font-medium text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{card.value}</p>
                     </div>
                   </a>
                 ) : (
@@ -149,7 +149,7 @@ const ContactUs: React.FC = () => {
                     </span>
                     <div>
                       <p className="text-xs text-[var(--color-muted)] uppercase tracking-wider">{card.label}</p>
-                      <p className="font-medium">{card.value}</p>
+                      <p className="font-medium text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{card.value}</p>
                     </div>
                   </div>
                 )}

@@ -334,7 +334,12 @@ body {
   width: 100%;
   padding: 1rem 0 0.5rem;
   font-size: 1rem;
+  color: var(--color-text-light);
   transition: border-color 0.3s ease;
+}
+
+.dark .floating-input {
+  color: var(--color-text-dark);
 }
 
 .floating-input:focus {

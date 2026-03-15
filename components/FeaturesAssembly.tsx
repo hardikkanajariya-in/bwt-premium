@@ -76,7 +76,7 @@ const FeaturesAssembly: React.FC = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-[family-name:var(--font-clash,_'Clash_Display')] font-bold mb-4"
             data-cursor="text"
           >
-            Easy Modular{" "}
+            <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Easy Modular</span>{" "}
             <span className="text-gradient">Assembly</span>
           </h2>
           <p className="text-[var(--color-muted)] text-lg">
@@ -185,7 +185,7 @@ const FeaturesAssembly: React.FC = () => {
                     >
                       {allComplete ? "✓" : s.step}
                     </motion.div>
-                    <h3 className="font-bold text-lg mb-1">{s.title}</h3>
+                    <h3 className="font-bold text-lg mb-1 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{s.title}</h3>
                     <p className="text-sm text-[var(--color-muted)]">{s.desc}</p>
                   </motion.div>
                 );

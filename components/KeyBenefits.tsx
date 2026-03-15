@@ -66,7 +66,7 @@ const KeyBenefits: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          12 Reasons to Choose{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">12 Reasons to Choose</span>{" "}
           <span className="text-gradient">BANCO</span>
         </motion.h2>
 
@@ -124,7 +124,7 @@ const KeyBenefits: React.FC = () => {
                   <span className="text-4xl block mb-3" style={{ filter: "drop-shadow(0 0 8px rgba(0,180,216,0.3))" }}>
                     {benefit.icon}
                   </span>
-                  <h3 className="font-bold text-lg mb-1">{benefit.title}</h3>
+                  <h3 className="font-bold text-lg mb-1 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{benefit.title}</h3>
                   <p className="text-sm text-[var(--color-muted)]">{benefit.desc}</p>
                 </motion.div>
               );

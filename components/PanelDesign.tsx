@@ -31,24 +31,24 @@ const PanelDesign: React.FC = () => {
   return (
     <section
       id="panel-design"
-      className="relative py-24 sm:py-32 bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)]"
+      className="relative py-16 sm:py-24 bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-[family-name:var(--font-clash,_'Clash_Display')] font-bold text-center mb-8"
+          className="text-4xl sm:text-5xl lg:text-6xl font-[family-name:var(--font-clash,_'Clash_Display')] font-bold text-center mb-4"
           data-cursor="text"
           variants={prefersReduced ? reducedMotionFade : fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          Standard{" "}
+          <span className="text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">Standard</span>{" "}
           <span className="text-gradient">Panel Design</span>
         </motion.h2>
 
         {/* Explode toggle */}
         {!isMobile && (
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <button
               onClick={() => setExploded(!exploded)}
               className="px-6 py-3 rounded-full bg-[var(--color-primary)] dark:bg-[var(--color-accent)] text-white dark:text-[var(--color-bg-dark)] font-semibold text-sm hover:shadow-lg transition-shadow"
@@ -59,10 +59,10 @@ const PanelDesign: React.FC = () => {
           </div>
         )}
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 items-start">
           {/* SVG Diagram */}
           <div className="relative flex items-center justify-center">
-            <svg viewBox="-150 -120 400 340" className="w-full max-w-lg">
+            <svg viewBox="-40 -30 300 220" className="w-full max-w-md">
               {/* Each part as a group */}
               {PANEL_PARTS.map((part) => {
                 const offset = exploded && !isMobile ? EXPLODE_OFFSETS[part.id] ?? { x: 0, y: 0 } : { x: 0, y: 0 };
@@ -160,14 +160,14 @@ const PanelDesign: React.FC = () => {
           </div>
 
           {/* Legend list */}
-          <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-2">
             {PANEL_PARTS.map((part, i) => (
               <motion.div
                 key={part.id}
-                className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors cursor-pointer ${
                   hoveredPart === part.id
                     ? "bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30"
-                    : "border border-transparent"
+                    : "border border-transparent hover:bg-[var(--color-primary)]/5 dark:hover:bg-[var(--color-accent)]/5"
                 }`}
                 variants={prefersReduced ? reducedMotionFade : fadeInUp}
                 initial="hidden"
@@ -177,12 +177,12 @@ const PanelDesign: React.FC = () => {
                 onMouseEnter={() => setHoveredPart(part.id)}
                 onMouseLeave={() => setHoveredPart(null)}
               >
-                <span className="w-6 h-6 rounded-full bg-[var(--color-primary)]/20 dark:bg-[var(--color-accent)]/20 flex items-center justify-center text-xs font-bold text-[var(--color-primary)] dark:text-[var(--color-accent)]">
+                <span className="w-5 h-5 rounded-full bg-[var(--color-primary)]/20 dark:bg-[var(--color-accent)]/20 flex items-center justify-center text-[10px] font-bold text-[var(--color-primary)] dark:text-[var(--color-accent)] shrink-0">
                   {i + 1}
                 </span>
-                <div>
-                  <p className="font-semibold text-sm">{part.label}</p>
-                  <p className="text-xs text-[var(--color-muted)]">{part.desc}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-sm text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{part.label}</p>
+                  <p className="text-[11px] text-[var(--color-muted)] truncate">{part.desc}</p>
                 </div>
               </motion.div>
             ))}
