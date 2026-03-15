@@ -59,7 +59,7 @@ const Applications: React.FC = () => {
     >
       {/* Progress bar */}
       {!isMobile && (
-        <div className="fixed top-0 left-0 right-0 z-30 h-0.5 bg-white/10">
+        <div className="fixed top-0 left-0 right-0 z-30 h-0.5 bg-[var(--color-primary)]/10 dark:bg-white/10">
           <motion.div
             className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]"
             style={{ width: `${progress * 100}%` }}
@@ -88,7 +88,7 @@ const Applications: React.FC = () => {
               variants={prefersReduced ? reducedMotionFade : fadeInUp}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-80px" }}
               custom={i}
             >
               <span className="text-5xl block mb-4">{app.icon}</span>

@@ -77,10 +77,7 @@ const FRPAdvantages: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {/* FRP Card */}
           <motion.div
-            className="rounded-3xl p-8 border-2 border-[var(--color-primary)]/40 dark:border-[var(--color-accent)]/40 relative overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-bg-card-dark) 100%)",
-            }}
+            className="rounded-3xl p-8 border-2 border-[var(--color-primary)]/40 dark:border-[var(--color-accent)]/40 relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-bg-card-light)] dark:from-[var(--color-primary-dark)] dark:to-[var(--color-bg-card-dark)]"
             variants={prefersReduced ? reducedMotionFade : slideInLeft}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -90,13 +87,13 @@ const FRPAdvantages: React.FC = () => {
               backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
             }} />
             <div className="relative">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <h3 className="text-2xl font-bold text-[var(--color-primary)] dark:text-white mb-6 flex items-center gap-2">
                 <span className="w-8 h-8 rounded-full bg-[var(--color-accent)]/20 flex items-center justify-center text-sm">💧</span>
                 BANCO FRP Tank
               </h3>
               <ul className="space-y-4">
                 {FRP_ADVANTAGES.map((adv, i) => (
-                  <li key={i} className="flex items-start gap-3 text-white/90 text-sm">
+                  <li key={i} className="flex items-start gap-3 text-[var(--color-text-light)] dark:text-white/90 text-sm">
                     <CheckSVG delay={0.3 + i * 0.1} />
                     <span>{adv}</span>
                   </li>
@@ -107,9 +104,8 @@ const FRPAdvantages: React.FC = () => {
 
           {/* Traditional Card */}
           <motion.div
-            className="rounded-3xl p-8 border-2 border-gray-400/20 relative overflow-hidden"
+            className="rounded-3xl p-8 border-2 border-gray-300/30 dark:border-gray-400/20 relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#2d2d2d] dark:to-[#1a1a1a]"
             style={{
-              background: "linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%)",
               transform: "rotate(-1deg)",
             }}
             variants={prefersReduced ? reducedMotionFade : slideInRight}
@@ -117,13 +113,13 @@ const FRPAdvantages: React.FC = () => {
             animate={inView ? "visible" : "hidden"}
           >
             <div className="relative" style={{ transform: "rotate(1deg)" }}>
-              <h3 className="text-2xl font-bold text-gray-400 mb-6 flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-gray-600/30 flex items-center justify-center text-sm">🏗️</span>
+              <h3 className="text-2xl font-bold text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-gray-300/50 dark:bg-gray-600/30 flex items-center justify-center text-sm">🏗️</span>
                 Traditional Steel/Concrete
               </h3>
               <ul className="space-y-4">
                 {TRADITIONAL_DISADVANTAGES.map((dis, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-500 text-sm">
+                  <li key={i} className="flex items-start gap-3 text-gray-400 dark:text-gray-500 text-sm">
                     <XSvg delay={0.3 + i * 0.1} />
                     <span className="line-through decoration-red-500/50">{dis}</span>
                   </li>

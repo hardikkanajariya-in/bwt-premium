@@ -70,7 +70,7 @@ const FeaturesAssembly: React.FC = () => {
           variants={prefersReduced ? reducedMotionFade : fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
         >
           <h2
             className="text-4xl sm:text-5xl lg:text-6xl font-[family-name:var(--font-clash,_'Clash_Display')] font-bold mb-4"
@@ -149,7 +149,7 @@ const FeaturesAssembly: React.FC = () => {
           {/* Step cards */}
           <div className="relative">
             {/* Progress line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-white/10 dark:bg-white/5">
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[var(--color-primary)]/10 dark:bg-white/5">
               <motion.div
                 className="w-full bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-accent)]"
                 animate={{ height: `${((activeStep + 1) / ASSEMBLY_STEPS.length) * 100}%` }}
@@ -170,7 +170,7 @@ const FeaturesAssembly: React.FC = () => {
                     variants={prefersReduced ? reducedMotionFade : fadeInUp}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-80px" }}
                     custom={i}
                   >
                     {/* Step number */}
@@ -217,7 +217,7 @@ const FeaturesAssembly: React.FC = () => {
               variants={prefersReduced ? reducedMotionFade : fadeInUp}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-80px" }}
               custom={i}
             >
               <span className="text-xl">{f.icon}</span>

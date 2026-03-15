@@ -12,6 +12,8 @@ interface MagneticButtonProps {
   rel?: string;
   "data-cursor"?: string;
   ariaLabel?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 const MagneticButton: React.FC<MagneticButtonProps> = ({
@@ -22,6 +24,8 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
   target,
   rel,
   ariaLabel,
+  disabled,
+  type,
   ...rest
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -78,6 +82,8 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
         onClick={onClick}
         aria-label={ariaLabel}
         className={className}
+        disabled={disabled}
+        type={!href ? type : undefined}
         {...rest}
       >
         <motion.span

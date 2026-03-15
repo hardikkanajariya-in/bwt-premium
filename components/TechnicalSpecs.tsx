@@ -33,7 +33,7 @@ const TechnicalSpecs: React.FC = () => {
             <motion.div
               key={spec.param}
               className={`flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-xl transition-colors hover:bg-cyan-500/8 ${
-                i % 2 === 1 ? "bg-white/3 dark:bg-white/[0.02]" : ""
+                i % 2 === 1 ? "bg-[var(--color-primary)]/[0.03]" : ""
               }`}
               variants={prefersReduced ? reducedMotionFade : slideInLeft}
               initial="hidden"
@@ -48,7 +48,7 @@ const TechnicalSpecs: React.FC = () => {
               {/* Middle: bar or badge */}
               <div className="flex-1 flex items-center gap-2">
                 {spec.bar !== null && spec.bar !== undefined && (
-                  <div className="flex-1 h-2 rounded-full bg-white/10 dark:bg-white/5 overflow-hidden">
+                  <div className="flex-1 h-2 rounded-full bg-[var(--color-primary)]/10 overflow-hidden">
                     <motion.div
                       className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]"
                       initial={{ width: 0 }}
@@ -58,7 +58,7 @@ const TechnicalSpecs: React.FC = () => {
                   </div>
                 )}
                 {"dual" in spec && spec.dual && (
-                  <div className="flex-1 h-2 rounded-full bg-white/10 dark:bg-white/5 overflow-hidden relative">
+                  <div className="flex-1 h-2 rounded-full bg-[var(--color-primary)]/10 overflow-hidden relative">
                     <motion.div
                       className="absolute h-full rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)]"
                       initial={{ left: "20%", width: 0 }}

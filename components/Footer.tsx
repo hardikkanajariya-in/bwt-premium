@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
             variants={prefersReduced ? reducedMotionFade : fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-80px" }}
           >
             <div className="flex items-center gap-2 mb-4">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none" className="text-[var(--color-accent)]">
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
             variants={prefersReduced ? reducedMotionFade : fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-80px" }}
             custom={1}
           >
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-accent)]">Quick Links</h4>
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
             variants={prefersReduced ? reducedMotionFade : fadeInUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-80px" }}
             custom={2}
           >
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-accent)]">Contact</h4>

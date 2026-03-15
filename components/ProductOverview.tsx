@@ -128,7 +128,7 @@ const ProductOverview: React.FC = () => {
                   variants={fadeInUp}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-80px" }}
                   custom={i}
                 >
                   {/* Connected line */}

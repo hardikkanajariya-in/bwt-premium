@@ -64,7 +64,7 @@ const KeyBenefits: React.FC = () => {
           variants={prefersReduced ? reducedMotionFade : fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
         >
           12 Reasons to Choose{" "}
           <span className="text-gradient">BANCO</span>

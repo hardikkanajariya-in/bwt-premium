@@ -40,7 +40,7 @@ const PanelDesign: React.FC = () => {
           variants={prefersReduced ? reducedMotionFade : fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
         >
           Standard{" "}
           <span className="text-gradient">Panel Design</span>
@@ -172,7 +172,7 @@ const PanelDesign: React.FC = () => {
                 variants={prefersReduced ? reducedMotionFade : fadeInUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-80px" }}
                 custom={i}
                 onMouseEnter={() => setHoveredPart(part.id)}
                 onMouseLeave={() => setHoveredPart(null)}

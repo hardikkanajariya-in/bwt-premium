@@ -39,7 +39,7 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, prefix, suffix, count
 
   return (
     <motion.div
-      className="relative rounded-3xl p-6 sm:p-8 bg-white/5 dark:bg-white/5 backdrop-blur-md border border-cyan-500/20 overflow-hidden group hover:-translate-y-2 transition-transform duration-300"
+      className="relative rounded-3xl p-6 sm:p-8 bg-[var(--color-primary)]/5 backdrop-blur-md border border-cyan-500/20 overflow-hidden group hover:-translate-y-2 transition-transform duration-300"
       style={{ boxShadow: "0 0 30px rgba(0,180,216,0.15)" }}
       variants={fadeInUp}
       custom={index}
@@ -170,7 +170,7 @@ const WhoWeAre: React.FC = () => {
             className="grid grid-cols-2 gap-4 sm:gap-6"
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
             {STATS.map((stat, i) => (
               <StatCard

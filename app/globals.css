@@ -270,16 +270,16 @@ body {
    WATER FILL WAVE
    ═══════════════════════════════════════════ */
 @keyframes waterWave {
-  0% {
-    transform: translateX(0);
+  0%, 100% {
+    transform: translateY(0);
   }
-  100% {
-    transform: translateX(-50%);
+  50% {
+    transform: translateY(-6px);
   }
 }
 
 .water-wave-anim {
-  animation: waterWave 3s linear infinite;
+  animation: waterWave 2s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════════════════

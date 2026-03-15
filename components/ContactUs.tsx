@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { m as motion, useInView, useReducedMotion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { CONTACT_INFO } from "@/lib/constants";
 import { fadeInUp, slideInLeft, slideInRight, reducedMotionFade } from "@/lib/animations";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
@@ -9,23 +10,36 @@ import MagneticButton from "./MagneticButton";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
+
 const ContactUs: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-15%" });
   const prefersReduced = useReducedMotion();
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (formStatus === "sending") return;
     setFormStatus("sending");
 
-    // TODO: Configure with EmailJS
-    // import emailjs from '@emailjs/browser';
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')
-    setTimeout(() => {
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        EMAILJS_PUBLIC_KEY,
+      );
       setFormStatus("success");
+      formRef.current?.reset();
       setTimeout(() => setFormStatus("idle"), 3000);
-    }, 1500);
+    } catch {
+      setFormStatus("error");
+      setTimeout(() => setFormStatus("idle"), 3000);
+    }
   };
 
   const contactCards = [
@@ -117,7 +131,7 @@ const ContactUs: React.FC = () => {
                     href={card.href}
                     target={card.href.startsWith("http") ? "_blank" : undefined}
                     rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-4 p-4 min-h-[44px] rounded-2xl border border-white/10 hover:border-[var(--color-accent)]/30 transition-colors"
+                    className="group flex items-center gap-4 p-4 min-h-[44px] rounded-2xl border border-[var(--color-primary)]/10 dark:border-white/10 hover:border-[var(--color-accent)]/30 transition-colors"
                     data-cursor="pointer"
                   >
                     <span className={`text-[var(--color-primary)] dark:text-[var(--color-accent)] transition-transform ${card.hoverClass} ${card.green ? "text-green-500 dark:text-green-400" : ""}`}>
@@ -129,7 +143,7 @@ const ContactUs: React.FC = () => {
                     </div>
                   </a>
                 ) : (
-                  <div className="group flex items-center gap-4 p-4 rounded-2xl border border-white/10">
+                  <div className="group flex items-center gap-4 p-4 rounded-2xl border border-[var(--color-primary)]/10 dark:border-white/10">
                     <span className={`text-[var(--color-primary)] dark:text-[var(--color-accent)] transition-transform ${card.hoverClass}`}>
                       {card.icon}
                     </span>
@@ -154,7 +168,7 @@ const ContactUs: React.FC = () => {
               <iframe
                 title="BANCO Office Location"
                 src="https://maps.google.com/maps?q=Nyerere+Road+Dar+Es+Salaam+Tanzania&output=embed"
-                className="w-full h-[250px] md:h-[300px] dark:grayscale-[0.7] dark:hue-rotate-[200deg]"
+                className="w-full h-[250px] md:h-[300px] grayscale dark:grayscale-0 dark:hue-rotate-180"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -163,6 +177,7 @@ const ContactUs: React.FC = () => {
 
           {/* Right: Contact Form */}
           <motion.form
+            ref={formRef}
             onSubmit={handleSubmit}
             className="space-y-8"
             variants={prefersReduced ? reducedMotionFade : slideInRight}
@@ -201,7 +216,9 @@ const ContactUs: React.FC = () => {
 
             {/* Submit button */}
             <MagneticButton
-              className={`w-full py-4 rounded-full font-semibold text-white transition-all duration-500 ${
+              type="submit"
+              disabled={formStatus === "sending"}
+              className={`w-full py-4 rounded-full font-semibold text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed ${
                 formStatus === "success"
                   ? "bg-green-500"
                   : formStatus === "error"

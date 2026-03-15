@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://banco-watertank.co.tz"),
   title: "BANCO Water Tank — FRP Panel Tanks | Neomech (T) Ltd.",
   description:
     "Premium FRP Panel Type Water Tanks by Neomech (T) Ltd., Tanzania. Corrosion-free, UV-resistant, modular water storage solutions since 1965.",
@@ -26,6 +27,21 @@ export const metadata: Metadata = {
     title: "BANCO Water Tank — Neomech (T) Ltd.",
     description: "Designed for Safety. Built to Last. Premium FRP Water Tanks.",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BANCO FRP Panel Type Water Tank by Neomech (T) Ltd.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BANCO Water Tank — Neomech (T) Ltd.",
+    description: "Designed for Safety. Built to Last. Premium FRP Water Tanks.",
+    images: ["/og-image.png"],
   },
 };
 
