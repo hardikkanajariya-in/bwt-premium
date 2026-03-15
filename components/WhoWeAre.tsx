@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m as motion, useInView, useReducedMotion } from "framer-motion";
 import { STATS } from "@/lib/constants";
 import { fadeInUp, slideInLeft, reducedMotionFade } from "@/lib/animations";
 

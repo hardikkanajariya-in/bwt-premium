@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { fadeInUp, reducedMotionFade } from "@/lib/animations";
 
 const USP_LIST = [
@@ -17,9 +17,14 @@ const FEATURES = ["Corrosion-Free", "UV Resistant", "Modular Design", "Potable S
 const ProductOverview: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (prefersReduced) return;
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReduced || isMobile) return;
     let ctx: { revert: () => void } | null = null;
 
     const initGSAP = async () => {
@@ -57,7 +62,7 @@ const ProductOverview: React.FC = () => {
 
     initGSAP();
     return () => { if (ctx) ctx.revert(); };
-  }, [prefersReduced]);
+  }, [prefersReduced, isMobile]);
 
   return (
     <section

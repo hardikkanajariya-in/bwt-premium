@@ -37,8 +37,9 @@ function FloatingParticles({ mouse }: { mouse: React.RefObject<{ x: number; y: n
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const time = useRef(0);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     if (prefersReduced) return;
+    state.invalidate();
     time.current += delta;
     particles.forEach((p, i) => {
       const mesh = meshRefs.current[i];
@@ -93,8 +94,9 @@ function WireframeGlobe() {
   const prefersReduced = useReducedMotion();
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  useFrame(() => {
+  useFrame((state) => {
     if (meshRef.current && !prefersReduced) {
+      state.invalidate();
       meshRef.current.rotation.y += 0.0005;
       meshRef.current.rotation.x += 0.0002;
     }
@@ -148,6 +150,7 @@ const HeroParticles: React.FC = () => {
     <Canvas
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 8], fov: 75 }}
+      frameloop="demand"
       style={{ position: "absolute", inset: 0 }}
       aria-hidden="true"
     >

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m as motion, useInView, useReducedMotion } from "framer-motion";
 import { CONTACT_INFO } from "@/lib/constants";
 import { fadeInUp, slideInLeft, slideInRight, reducedMotionFade } from "@/lib/animations";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
@@ -117,7 +117,7 @@ const ContactUs: React.FC = () => {
                     href={card.href}
                     target={card.href.startsWith("http") ? "_blank" : undefined}
                     rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-4 p-4 rounded-2xl border border-white/10 hover:border-[var(--color-accent)]/30 transition-colors"
+                    className="group flex items-center gap-4 p-4 min-h-[44px] rounded-2xl border border-white/10 hover:border-[var(--color-accent)]/30 transition-colors"
                     data-cursor="pointer"
                   >
                     <span className={`text-[var(--color-primary)] dark:text-[var(--color-accent)] transition-transform ${card.hoverClass} ${card.green ? "text-green-500 dark:text-green-400" : ""}`}>

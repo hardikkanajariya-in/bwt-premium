@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { m as motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { PANEL_PARTS } from "@/lib/constants";
 import { fadeInUp, reducedMotionFade } from "@/lib/animations";
 
@@ -22,7 +22,11 @@ const PanelDesign: React.FC = () => {
   const [exploded, setExploded] = useState(false);
   const [hoveredPart, setHoveredPart] = useState<string | null>(null);
   const prefersReduced = useReducedMotion();
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
 
   return (
     <section

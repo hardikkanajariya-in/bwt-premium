@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import Providers from "@/components/Providers";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,11 +44,12 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <a href="#main-content" className="skip-to-content">
-            Skip to content
-          </a>
-          <CustomCursor />
-          {children}
+          <Providers>
+            <a href="#main-content" className="skip-to-content">
+              Skip to content
+            </a>
+            {children}
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

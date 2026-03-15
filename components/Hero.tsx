@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
 import { letterReveal, wordReveal, fadeInUp, reducedMotionFade } from "@/lib/animations";
@@ -89,13 +89,13 @@ const Hero: React.FC = () => {
         >
           <MagneticButton
             href="#product-overview"
-            className="px-8 py-3.5 rounded-full bg-[var(--color-primary)] text-white font-semibold text-base hover:shadow-xl hover:shadow-[var(--color-primary)]/30 transition-shadow"
+            className="px-8 py-3.5 min-h-[44px] rounded-full bg-[var(--color-primary)] text-white font-semibold text-base hover:shadow-xl hover:shadow-[var(--color-primary)]/30 transition-shadow"
           >
             Explore Products
           </MagneticButton>
           <MagneticButton
             href="#contact"
-            className="px-8 py-3.5 rounded-full border-2 border-[var(--color-accent)] text-[var(--color-accent)] font-semibold text-base hover:bg-[var(--color-accent)] hover:text-[var(--color-bg-dark)] transition-colors"
+            className="px-8 py-3.5 min-h-[44px] rounded-full border-2 border-[var(--color-accent)] text-[var(--color-accent)] font-semibold text-base hover:bg-[var(--color-accent)] hover:text-[var(--color-bg-dark)] transition-colors"
           >
             Get a Quote
           </MagneticButton>

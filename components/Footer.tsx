@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, type MouseEvent } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { FOOTER_LINKS, SOCIAL_LINKS, CONTACT_INFO } from "@/lib/constants";
 import { fadeInUp, reducedMotionFade } from "@/lib/animations";
 
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-[var(--color-muted)] hover:text-white hover:-translate-y-1 transition-all"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center border border-white/10 text-[var(--color-muted)] hover:text-white hover:-translate-y-1 transition-all"
                   style={{ ["--glow" as string]: social.color }}
                   data-cursor="pointer"
                   onMouseEnter={(e) => {

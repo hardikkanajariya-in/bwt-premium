@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { m as motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const CustomCursor: React.FC = () => {
@@ -21,9 +21,8 @@ const CustomCursor: React.FC = () => {
   const color = resolvedTheme === "dark" ? "#00B4D8" : "#0077B6";
 
   useEffect(() => {
-    const isTouchDevice =
-      "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    if (isTouchDevice) return;
+    const noFinePointer = !window.matchMedia("(pointer: fine)").matches;
+    if (noFinePointer) return;
     setIsTouch(false);
   }, []);
 

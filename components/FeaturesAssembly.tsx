@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { ASSEMBLY_STEPS, ASSEMBLY_FEATURES } from "@/lib/constants";
 import { fadeInUp, reducedMotionFade } from "@/lib/animations";
 
@@ -9,7 +9,11 @@ const FeaturesAssembly: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
 
   useEffect(() => {
     if (prefersReduced || isMobile) return;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m as motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Sun, Moon } from "lucide-react";
 
@@ -50,7 +50,7 @@ const ThemeToggle: React.FC = () => {
       ref={btnRef}
       onClick={toggle}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-      className="relative flex items-center w-14 h-8 rounded-full p-1 transition-colors duration-300"
+      className="relative flex items-center w-14 min-h-[44px] h-8 rounded-full p-1 transition-colors duration-300"
       style={{ backgroundColor: isDark ? "#1e293b" : "#fef3c7" }}
     >
       <motion.div

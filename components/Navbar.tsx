@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import {
-  motion,
+  m,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <motion.header
+      <m.header
         className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
         animate={{ y: hidden && !mobileOpen ? "-100%" : "0%" }}
         transition={{ duration: 0.3 }}
@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
                 <a
                   key={href}
                   href={href}
-                  className={`nav-link text-sm font-medium transition-colors ${
+                  className={`nav-link text-sm font-medium transition-colors min-h-[44px] flex items-center ${
                     activeSection === href.slice(1) ? "active text-[var(--color-primary)] dark:text-[var(--color-accent)]" : ""
                   }`}
                 >
@@ -117,11 +117,11 @@ const Navbar: React.FC = () => {
 
               {/* Mobile Hamburger */}
               <button
-                className="lg:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center"
+                className="lg:hidden flex flex-col gap-1.5 min-w-[44px] min-h-[44px] w-11 h-11 items-center justify-center"
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
               >
-                <motion.span
+                <m.span
                   className="block w-6 h-0.5 bg-current origin-center"
                   animate={
                     mobileOpen
@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
                   }
                   transition={{ duration: 0.3 }}
                 />
-                <motion.span
+                <m.span
                   className="block w-6 h-0.5 bg-current origin-center"
                   animate={
                     mobileOpen
@@ -143,26 +143,26 @@ const Navbar: React.FC = () => {
             </div>
           </nav>
         </div>
-      </motion.header>
+      </m.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center"
+          <m.div
+            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.nav
+            <m.nav
               className="flex flex-col items-center gap-6"
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
             >
               {NAV_LINKS.map(({ label, href }, i) => (
-                <motion.a
+                <m.a
                   key={href}
                   href={href}
                   onClick={closeMobile}
@@ -171,10 +171,10 @@ const Navbar: React.FC = () => {
                   custom={i}
                 >
                   {label}
-                </motion.a>
+                </m.a>
               ))}
-            </motion.nav>
-          </motion.div>
+            </m.nav>
+          </m.div>
         )}
       </AnimatePresence>
     </>

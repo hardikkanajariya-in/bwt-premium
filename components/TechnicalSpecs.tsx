@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m as motion, useInView, useReducedMotion } from "framer-motion";
 import { SPECS } from "@/lib/constants";
 import { slideInLeft, reducedMotionFade } from "@/lib/animations";
 

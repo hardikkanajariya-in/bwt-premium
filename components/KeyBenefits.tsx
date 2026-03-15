@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m as motion, useInView, useReducedMotion } from "framer-motion";
 import { BENEFITS } from "@/lib/constants";
 import { fadeInUp, reducedMotionFade, cardHover } from "@/lib/animations";
 
@@ -11,7 +11,11 @@ const KeyBenefits: React.FC = () => {
   const inView = useInView(sectionRef, { once: true, margin: "-10%" });
   const prefersReduced = useReducedMotion();
   const [fillProgress, setFillProgress] = useState(0);
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
 
   useEffect(() => {
     if (prefersReduced || isMobile) return;
