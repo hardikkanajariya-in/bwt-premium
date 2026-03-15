@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Sun, Moon } from "lucide-react";
 
@@ -9,6 +9,7 @@ const ThemeToggle: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => setMounted(true), []);
 
@@ -56,7 +57,7 @@ const ThemeToggle: React.FC = () => {
         className="absolute w-6 h-6 rounded-full flex items-center justify-center shadow-md"
         style={{ backgroundColor: isDark ? "#0f172a" : "#fbbf24" }}
         animate={{ x: isDark ? 24 : 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        transition={prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 25 }}
       >
         <AnimatePresence mode="wait">
           {isDark ? (
@@ -65,7 +66,7 @@ const ThemeToggle: React.FC = () => {
               initial={{ rotate: -180, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 180, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={prefersReduced ? { duration: 0 } : { duration: 0.3 }}
             >
               <Moon size={14} className="text-cyan-400" />
             </motion.div>
@@ -75,7 +76,7 @@ const ThemeToggle: React.FC = () => {
               initial={{ rotate: 180, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -180, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={prefersReduced ? { duration: 0 } : { duration: 0.3 }}
             >
               <Sun size={14} className="text-amber-700" />
             </motion.div>

@@ -6,11 +6,12 @@ import {
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
+  useReducedMotion,
 } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import ThemeToggle from "./ThemeToggle";
 import MagneticButton from "./MagneticButton";
-import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { staggerContainer, fadeInUp, reducedMotionFade } from "@/lib/animations";
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,6 +19,7 @@ const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const { scrollY } = useScroll();
+  const prefersReduced = useReducedMotion();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -165,7 +167,7 @@ const Navbar: React.FC = () => {
                   href={href}
                   onClick={closeMobile}
                   className="text-4xl md:text-5xl font-bold text-white hover:text-[var(--color-accent)] transition-colors"
-                  variants={fadeInUp}
+                  variants={prefersReduced ? reducedMotionFade : fadeInUp}
                   custom={i}
                 >
                   {label}

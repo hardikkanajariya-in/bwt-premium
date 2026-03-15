@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -35,10 +35,11 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
   const springTextX = useSpring(textX, { stiffness: 150, damping: 15 });
   const springTextY = useSpring(textY, { stiffness: 150, damping: 15 });
 
+  const prefersReduced = useReducedMotion();
   const isTouchDevice = typeof window !== "undefined" && "ontouchstart" in window;
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (isTouchDevice) return;
+    if (isTouchDevice || prefersReduced) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

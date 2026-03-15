@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const CustomCursor: React.FC = () => {
@@ -17,6 +17,7 @@ const CustomCursor: React.FC = () => {
   const dotX = useRef(0);
   const dotY = useRef(0);
 
+  const prefersReduced = useReducedMotion();
   const color = resolvedTheme === "dark" ? "#00B4D8" : "#0077B6";
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const CustomCursor: React.FC = () => {
     return () => document.removeEventListener("mouseover", handleOver);
   }, [isTouch]);
 
-  if (isTouch) return null;
+  if (isTouch || prefersReduced) return null;
 
   const ringSize = hoverType === "pointer" ? 56 : 36;
   const ringScaleX = hoverType === "text" ? 3 : 1;
