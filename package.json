@@ -9,26 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "framer-motion": "^11",
+    "gsap": "^3.12",
+    "lucide-react": "latest",
     "next": "latest",
+    "next-themes": "^0.4",
     "react": "latest",
     "react-dom": "latest",
-    "framer-motion": "^11",
-    "next-themes": "^0.4",
-    "@emailjs/browser": "^4",
-    "lucide-react": "latest",
-    "three": "^0.168",
-    "@react-three/fiber": "^8",
-    "@react-three/drei": "^9",
-    "gsap": "^3.12"
+    "three": "^0.168"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "tailwindcss": "^4",
     "@tailwindcss/postcss": "^4",
-    "postcss": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@types/three": "latest"
+    "@types/three": "latest",
+    "postcss": "latest",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
