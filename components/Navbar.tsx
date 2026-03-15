@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <m.header
-        className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${!scrolled ? "text-white" : ""}`}
         animate={{ y: hidden && !mobileOpen ? "-100%" : "0%" }}
         transition={{ duration: 0.3 }}
         style={{
@@ -95,7 +95,9 @@ const Navbar: React.FC = () => {
                   key={href}
                   href={href}
                   className={`nav-link text-sm font-medium transition-colors min-h-[44px] flex items-center ${
-                    activeSection === href.slice(1) ? "active text-[var(--color-primary)] dark:text-[var(--color-accent)]" : ""
+                    activeSection === href.slice(1)
+                      ? `active ${scrolled ? "text-[var(--color-primary)] dark:text-[var(--color-accent)]" : "text-[var(--color-accent)]"}`
+                      : ""
                   }`}
                 >
                   {label}

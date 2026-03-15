@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
               </svg>
               <span className="font-[family-name:var(--font-clash,_'Clash_Display')] font-bold text-lg">BANCO</span>
             </div>
-            <p className="text-sm text-[var(--color-muted)] max-w-xs">
+            <p className="text-sm text-gray-400 max-w-xs">
               Designed for Safety. Built to Last. Premium FRP Panel Type Water Tanks by Neomech (T) Ltd.
             </p>
           </motion.div>
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="nav-link text-sm text-[var(--color-muted)] hover:text-white transition-colors">
+                  <a href={link.href} className="nav-link text-sm text-gray-400 hover:text-white transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
             custom={2}
           >
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-accent)]">Contact</h4>
-            <div className="space-y-2 text-sm text-[var(--color-muted)]">
+            <div className="space-y-2 text-sm text-gray-400">
               <p>{CONTACT_INFO.address}</p>
               <p>{CONTACT_INFO.phone}</p>
               <p>{CONTACT_INFO.email}</p>
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center border border-white/10 text-[var(--color-muted)] hover:text-white hover:-translate-y-1 transition-all"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center border border-white/10 text-gray-400 hover:text-white hover:-translate-y-1 transition-all"
                   style={{ ["--glow" as string]: social.color }}
                   data-cursor="pointer"
                   onMouseEnter={(e) => {
@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
-          <p className="text-xs text-[var(--color-muted)]">
+          <p className="text-xs text-gray-400">
             &copy; 2026 BANCO Water Tank &mdash; Neomech (T) Ltd. All rights reserved.
           </p>
         </div>

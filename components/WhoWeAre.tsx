@@ -61,7 +61,7 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, prefix, suffix, count
 
 const WhoWeAre: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-20%" });
+  const inView = useInView(sectionRef, { once: true, margin: "-10%" });
   const prefersReduced = useReducedMotion();
   const v = prefersReduced ? reducedMotionFade : undefined;
 
@@ -72,14 +72,14 @@ const WhoWeAre: React.FC = () => {
       className="relative py-24 sm:py-32 overflow-hidden bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)]"
     >
       {/* Conic gradient background */}
-      <div className="absolute inset-0 opacity-30 dark:opacity-20">
+      <div className="absolute inset-0 opacity-15 dark:opacity-10">
         <div
           className="w-full h-full"
           style={{
             background:
               "conic-gradient(from 0deg at 50% 50%, var(--color-primary) 0deg, var(--color-accent-light) 120deg, var(--color-accent) 240deg, var(--color-primary) 360deg)",
             animation: "spin 20s linear infinite",
-            filter: "blur(80px)",
+            filter: "blur(100px)",
           }}
         />
       </div>
@@ -148,14 +148,7 @@ const WhoWeAre: React.FC = () => {
 
             {/* Tanzania badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold"
-              style={{
-                border: "2px solid transparent",
-                backgroundClip: "padding-box",
-                backgroundImage:
-                  "linear-gradient(var(--color-bg-card-light), var(--color-bg-card-light)), linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-accent-light), var(--color-primary))",
-                backgroundOrigin: "border-box",
-              }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-[var(--color-bg-card-light)] dark:bg-[var(--color-bg-card-dark)] text-[var(--color-text-light)] dark:text-[var(--color-text-dark)] border-2 border-[var(--color-primary)]/30 dark:border-[var(--color-accent)]/30"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.8, duration: 0.5 }}

@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
 
         {/* Sub text */}
         <motion.p
-          className="text-[var(--color-muted)] mt-4 text-sm sm:text-base"
+          className="text-gray-400 mt-4 text-sm sm:text-base"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
           <div className="w-5 h-9 rounded-full border-2 border-[var(--color-accent)]/50 relative">
             <div className="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] scroll-indicator-dot" />
           </div>
-          <span className="text-xs text-[var(--color-muted)] uppercase tracking-widest">
+          <span className="text-xs text-gray-400 uppercase tracking-widest">
             Scroll to explore
           </span>
         </motion.div>

@@ -119,7 +119,7 @@ const FRPAdvantages: React.FC = () => {
               </h3>
               <ul className="space-y-4">
                 {TRADITIONAL_DISADVANTAGES.map((dis, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-400 dark:text-gray-500 text-sm">
+                  <li key={i} className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-sm">
                     <XSvg delay={0.3 + i * 0.1} />
                     <span className="line-through decoration-red-500/50">{dis}</span>
                   </li>

@@ -92,7 +92,7 @@ const Applications: React.FC = () => {
               custom={i}
             >
               <span className="text-5xl block mb-4">{app.icon}</span>
-              <h3 className="text-2xl font-bold mb-2">{app.name}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{app.name}</h3>
               <p className="text-[var(--color-muted)]">{app.desc}</p>
             </motion.div>
           ))}
@@ -110,7 +110,7 @@ const Applications: React.FC = () => {
                 className={`shrink-0 w-[60vw] md:w-[45vw] lg:w-[35vw] h-[70vh] rounded-3xl p-10 flex flex-col justify-end bg-gradient-to-br ${app.gradient} border border-white/10 dark:border-white/5 group hover:border-[var(--color-accent)]/40 transition-colors`}
               >
                 <span className="text-7xl mb-6 group-hover:scale-110 transition-transform">{app.icon}</span>
-                <h3 className="text-3xl lg:text-4xl font-black mb-3">{app.name}</h3>
+                <h3 className="text-3xl lg:text-4xl font-black mb-3 text-[var(--color-text-light)] dark:text-[var(--color-text-dark)]">{app.name}</h3>
                 <p className="text-base text-[var(--color-muted)] max-w-sm">{app.desc}</p>
               </div>
             ))}
