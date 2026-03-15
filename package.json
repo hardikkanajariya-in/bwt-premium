@@ -1,0 +1,34 @@
+{
+  "name": "banco-water-tank",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "framer-motion": "^11",
+    "next-themes": "^0.4",
+    "@emailjs/browser": "^4",
+    "lucide-react": "latest",
+    "three": "^0.168",
+    "@react-three/fiber": "^8",
+    "@react-three/drei": "^9",
+    "gsap": "^3.12"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "tailwindcss": "^4",
+    "@tailwindcss/postcss": "^4",
+    "postcss": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/three": "latest"
+  }
+}

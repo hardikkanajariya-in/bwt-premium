@@ -1,0 +1,384 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   FONTS
+   ═══════════════════════════════════════════ */
+@font-face {
+  font-family: "Clash Display";
+  src: url("https://api.fontshare.com/v2/css?f[]=clash-display@700,600&display=swap");
+  font-weight: 600 700;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════
+   CSS VARIABLES
+   ═══════════════════════════════════════════ */
+:root {
+  --color-primary: #0077b6;
+  --color-primary-dark: #023e8a;
+  --color-accent: #00b4d8;
+  --color-accent-light: #90e0ef;
+  --color-bg-dark: #050d18;
+  --color-bg-card-dark: #0a1628;
+  --color-bg-light: #f0f7ff;
+  --color-bg-card-light: #ffffff;
+  --color-text-dark: #e8f4fd;
+  --color-text-light: #0d1117;
+  --color-muted: #6b7280;
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg-light);
+  color: var(--color-text-light);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark body {
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR (Desktop Only)
+   ═══════════════════════════════════════════ */
+@media (pointer: fine) {
+  .cursor-hidden * {
+    cursor: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   ═══════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+}
+
+/* ═══════════════════════════════════════════
+   FOCUS RINGS
+   ═══════════════════════════════════════════ */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   NAV LINK UNDERLINE
+   ═══════════════════════════════════════════ */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.dark .nav-link::after {
+  background: var(--color-accent);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL INDICATOR
+   ═══════════════════════════════════════════ */
+@keyframes scrollDot {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(16px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator-dot {
+  animation: scrollDot 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════
+   WAVE ANIMATIONS
+   ═══════════════════════════════════════════ */
+@keyframes wave1 {
+  0% {
+    d: path(
+      "M0,160 C320,220 640,100 960,160 C1280,220 1600,100 1920,160 L1920,320 L0,320 Z"
+    );
+  }
+  50% {
+    d: path(
+      "M0,180 C320,120 640,240 960,180 C1280,120 1600,240 1920,180 L1920,320 L0,320 Z"
+    );
+  }
+  100% {
+    d: path(
+      "M0,160 C320,220 640,100 960,160 C1280,220 1600,100 1920,160 L1920,320 L0,320 Z"
+    );
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    d: path(
+      "M0,200 C320,140 640,260 960,200 C1280,140 1600,260 1920,200 L1920,320 L0,320 Z"
+    );
+  }
+  50% {
+    d: path(
+      "M0,180 C320,240 640,160 960,180 C1280,240 1600,160 1920,180 L1920,320 L0,320 Z"
+    );
+  }
+  100% {
+    d: path(
+      "M0,200 C320,140 640,260 960,200 C1280,140 1600,260 1920,200 L1920,320 L0,320 Z"
+    );
+  }
+}
+
+@keyframes wave3 {
+  0% {
+    d: path(
+      "M0,240 C320,200 640,280 960,240 C1280,200 1600,280 1920,240 L1920,320 L0,320 Z"
+    );
+  }
+  50% {
+    d: path(
+      "M0,260 C320,280 640,220 960,260 C1280,280 1600,220 1920,260 L1920,320 L0,320 Z"
+    );
+  }
+  100% {
+    d: path(
+      "M0,240 C320,200 640,280 960,240 C1280,200 1600,280 1920,240 L1920,320 L0,320 Z"
+    );
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PULSE ANIMATIONS
+   ═══════════════════════════════════════════ */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.pulse-ring-delayed {
+  animation: pulse-ring 2s ease-out 0.5s infinite;
+}
+
+/* ═══════════════════════════════════════════
+   CALLOUT DOT PULSE
+   ═══════════════════════════════════════════ */
+@keyframes calloutPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.callout-pulse {
+  animation: calloutPulse 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════
+   CONIC GRADIENT BG
+   ═══════════════════════════════════════════ */
+@keyframes conicRotate {
+  0% {
+    --conic-angle: 0deg;
+  }
+  100% {
+    --conic-angle: 360deg;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   GRADIENT BORDER
+   ═══════════════════════════════════════════ */
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-border {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-accent),
+    var(--color-accent-light),
+    var(--color-primary)
+  );
+  background-size: 300% 100%;
+  animation: gradientBorder 4s ease infinite;
+}
+
+/* ═══════════════════════════════════════════
+   WATER FILL WAVE
+   ═══════════════════════════════════════════ */
+@keyframes waterWave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.water-wave-anim {
+  animation: waterWave 3s linear infinite;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER RIPPLE
+   ═══════════════════════════════════════════ */
+@keyframes footerRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+.footer-ripple {
+  animation: footerRipple 1s ease-out forwards;
+}
+
+/* ═══════════════════════════════════════════
+   SKIP TO CONTENT
+   ═══════════════════════════════════════════ */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING LABEL INPUT
+   ═══════════════════════════════════════════ */
+.floating-input {
+  border: none;
+  border-bottom: 2px solid var(--color-muted);
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 1rem 0 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.floating-input:focus {
+  border-color: var(--color-accent);
+}
+
+.floating-label {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-size: 1rem;
+  color: var(--color-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.floating-input:focus ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+  top: -0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+/* ═══════════════════════════════════════════
+   VIEW TRANSITION
+   ═══════════════════════════════════════════ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+/* ═══════════════════════════════════════════
+   MISC UTILITIES
+   ═══════════════════════════════════════════ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+}
